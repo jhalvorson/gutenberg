@@ -268,7 +268,7 @@ export function createRegistry( storeConfigs = {} ) {
 	 */
 	function withPlugins( attributes ) {
 		return mapValues( attributes, ( attribute, key ) => function() {
-			if ( key === 'attributes' ) {
+			if ( typeof key !== 'function' ) {
 				return attribute;
 			}
 			return registry[ key ].apply( null, arguments );
